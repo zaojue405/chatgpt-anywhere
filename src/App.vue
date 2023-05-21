@@ -56,7 +56,7 @@ import { ref, onMounted,nextTick } from 'vue'
 // import ConfigGuide from './components/ConfigGuide.vue'
 import MyBeautifulChat from './components/MyBeautifulChat.vue'
 // import Login from '@/components/Login.vue';
-import ConversiationTable from './components/ConversiationTable.vue'
+import type ConversiationTable from './components/ConversiationTable.vue'
 import { useConfig } from './hooks/useConfig'
 import { isMobileBrowser } from './utils/isMobileBrowser'
 const showRegistrationForm = ref(false);
