@@ -3,7 +3,7 @@ import type { config } from '../types/config'
 import { unref, computed } from 'vue'
 
 export function useConfig() {
-  const KEY = 'chatGpt-Anywhere-Config'
+  const KEY = 'mykey3'
   const refConfig = useLocalStorage(KEY, getDefaultConfig(), {
     mergeDefaults: true
   })
@@ -23,10 +23,10 @@ export function useConfig() {
 
   function getDefaultConfig(): config {
     return {
-      key: '',
-      baseUrl: '',
+      key: 'fk202716-MNMnqle4CeX8RAT3FXUwQp73VQHpEIsn',
+      baseUrl: 'https://oa.api2d.net',
       model: 'gpt-3.5-turbo',
-      systemRole: 'You are a helpful assistant.',
+      systemRole: '你负责帮用户做作业',
       max_tokens: 1000,
       temperature: 1,
       stream: false

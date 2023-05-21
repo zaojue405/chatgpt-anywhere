@@ -1,6 +1,6 @@
 <template>
-  <div class="guide" v-html="content"></div>
-  <div class="guide" v-html="startChat"></div>
+  <!-- <div class="guide" v-html="content"></div> -->
+  <!-- <div class="guide" v-html="startChat"></div> -->
 </template>
 
 <script setup lang="ts">
@@ -40,7 +40,7 @@ https://platform.openai.com/account/api-keys
 \`\`\`json
 {
     "role": "system",
-    "content": "You are a helpful assistant."
+    "content": "你是一个老师，正在帮助学生解决问题"
 }
 \`\`\`
 `)

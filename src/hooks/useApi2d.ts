@@ -13,7 +13,6 @@ export function useApi2d() {
   ) {
     try {
       const { refConfig } = useConfig()
-
       const messages: Array<ChatGPTMessage> = []
       if (conversations.length > 0) {
         // 有历史对话
@@ -37,6 +36,7 @@ export function useApi2d() {
         throw new Error('系统错误：请先设置key')
       }
       const api = new Api2d(refConfig.value.key, refConfig.value.baseUrl)
+      
       const ret: ChatGptResponse | string = await api.completion({
         model: refConfig.value.model,
         messages: messages,

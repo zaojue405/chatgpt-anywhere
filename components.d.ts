@@ -26,8 +26,11 @@ declare module '@vue/runtime-core' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    Login: typeof import('./src/components/Login.vue')['default']
+    Logo: typeof import('./src/components/Logo.vue')['default']
     MarkdwonText: typeof import('./src/components/MarkdwonText.vue')['default']
     MyBeautifulChat: typeof import('./src/components/MyBeautifulChat.vue')['default']
     MyConfig: typeof import('./src/components/MyConfig.vue')['default']
+    NewComponent: typeof import('./src/components/NewComponent.vue')['default']
   }
 }

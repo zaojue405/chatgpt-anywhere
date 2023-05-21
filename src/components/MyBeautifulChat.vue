@@ -115,7 +115,7 @@ watch(
     }
   }
 )
-
+openFullscreen()
 defineExpose({
   open,
   openFullscreen,
