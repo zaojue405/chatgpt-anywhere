@@ -118,7 +118,7 @@ function openFullscreen() {
 
 
 async function login() {
-  const url = 'http://3.25.97.184:5000/login';
+  const url = 'https://3.25.97.184:5000/login';
   const data = {
     username: username.value,
     password: password.value
@@ -166,7 +166,7 @@ function register() {
 }
 async function registerUrl() {
   // 异步函数的内容
-  const url = 'http://3.25.97.184:5000/register'; // 替换为您的后端接口地址
+  const url = 'https://3.25.97.184:5000/register'; // 替换为您的后端接口地址
   const data = {
     username: registerUsername.value,
     password: registerPassword.value
