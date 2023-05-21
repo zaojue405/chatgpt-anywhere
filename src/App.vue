@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="login-container">
-    <h1 class="page-title">作业帮</h1> <!-- 添加大标题 -->
+    <h1 class="page-title">HomeworkGenius</h1> <!-- 添加大标题 -->
     <h1>Login</h1>
     <form @submit.prevent="login">
       <label for="username">Username:</label>
@@ -118,7 +118,7 @@ function openFullscreen() {
 
 
 async function login() {
-  const url = 'http://localhost:5000/login';
+  const url = 'http://3.25.97.184:5000/login';
   const data = {
     username: username.value,
     password: password.value
@@ -166,7 +166,7 @@ function register() {
 }
 async function registerUrl() {
   // 异步函数的内容
-  const url = 'http://localhost:5000/register'; // 替换为您的后端接口地址
+  const url = 'http://3.25.97.184:5000/register'; // 替换为您的后端接口地址
   const data = {
     username: registerUsername.value,
     password: registerPassword.value
