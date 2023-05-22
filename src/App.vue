@@ -166,7 +166,7 @@ function register() {
 }
 async function registerUrl() {
   // 异步函数的内容
-  const url = 'https:/homeworkgenius1990.club:80/register'; // 替换为您的后端接口地址
+  const url = 'https://homeworkgenius1990.club:80/register'; // 替换为您的后端接口地址
   const data = {
     username: registerUsername.value,
     password: registerPassword.value
