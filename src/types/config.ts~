@@ -1,4 +1,4 @@
-export interface Config {
+export interface config {
   key: string
   baseUrl: string
   model: string
@@ -6,24 +6,22 @@ export interface Config {
   max_tokens: number
   temperature: number
   stream: boolean
+}
 
-}
-export interface apiConfig {
-  api: string
-}
+
 
 // 开发环境配置
-export const developmentConfig: apiConfig = {
-  api: 'http://127.0.0.1:80',
+export const developmentConfig: Config = {
+  api: 'https://127.0.0.1:80',
 };
 
 // 生产环境配置
-export const productionConfig: apiConfig = {
+export const productionConfig: Config = {
   api: 'https://homeworkgenius1990.club:80',
 };
 
 // 根据环境选择配置
-let config: apiConfig;
+let config: Config;
 
 if (import.meta.env.MODE === 'development') {
   config = developmentConfig;

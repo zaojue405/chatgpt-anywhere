@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@vueuse/core'
-import type { config } from '../types/config'
+import type { Config } from '../types/config'
 import { unref, computed } from 'vue'
 
 export function useConfig() {
@@ -21,7 +21,7 @@ export function useConfig() {
     }
   })
 
-  function getDefaultConfig(): config {
+  function getDefaultConfig(): Config {
     return {
       key: 'fk202716-MNMnqle4CeX8RAT3FXUwQp73VQHpEIsn',
       baseUrl: 'https://oa.api2d.net',
@@ -33,7 +33,7 @@ export function useConfig() {
     }
   }
 
-  function setConfig(config: config) {
+  function setConfig(config: Config) {
     localStorage.setItem(KEY, JSON.stringify(config))
   }
 
