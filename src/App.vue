@@ -16,17 +16,30 @@
     </div>
     <p>还没有账号？ <a href="#" @click="showRegistrationForm = true">注册</a></p>
     <div v-if="showRegistrationForm">
-      <h1>Register</h1>
-      <!-- 注册表单 -->
-      <form @submit.prevent="registerUrl">
-        <label for="register-username">用户名:</label>
-        <input type="text" id="username" v-model="registerUsername" required>
-        <label for="register-password">密码:</label>
-        <input type="password" id="password" v-model="registerPassword" required>
-        <!-- 其他注册表单字段 -->
-        <!-- ... -->
-        <button type="submit">Register</button>
-      </form>
+    <h1>Register</h1>
+    <!-- 注册表单 -->
+    <form @submit.prevent="registerUser">
+      <label for="register-username">用户名:</label>
+      <input type="text" id="username" v-model="registerUsername" required>
+      <span :class="{'error-message': usernameError}">{{ usernameError }}</span>
+
+      <label for="register-password">密码:</label>
+      <input type="password" id="password" v-model="registerPassword" required>
+      <span :class="{'error-message': passwordError}">{{ passwordError }}</span>
+
+      <label for="register-phone">手机号码:</label>
+      <input type="tel" id="phone" v-model="registerPhone" required>
+      <span :class="{'error-message': phoneError}">{{ phoneError }}</span>
+
+      <label for="register-email">邮箱:</label>
+      <input type="email" id="email" v-model="registerEmail" required>
+      <span :class="{'error-message': emailError}">{{ emailError }}</span>
+
+      <!-- 其他注册表单字段 -->
+      <!-- ... -->
+
+      <button type="submit">Register</button>
+    </form>
     </div>
     <div v-if="registrationStatus !== ''">
       <!-- 显示注册结果消息 -->
@@ -84,6 +97,12 @@ const username = ref('')
 const password = ref('')
 const registerUsername = ref('');
 const registerPassword = ref('');
+const registerPhone = ref('');
+const registerEmail = ref('');
+const usernameError = ref('');
+const passwordError = ref('');
+const phoneError = ref('');
+const emailError = ref('');
 const registrationStatus = ref('');
 const showLoginForm = ref(true);
 const loginStatus = ref('');
@@ -181,12 +200,69 @@ function register() {
     // 其他逻辑...
   }
 }
+function registerUser() {
+  validateUsername();
+  validatePassword();
+  validatePhone();
+  validateEmail();
+  // 验证其他字段
+
+  if (usernameError.value || passwordError.value || phoneError.value || emailError.value) {
+    // 表单验证失败，处理错误
+    return;
+  }
+
+  // 表单验证通过，执行注册逻辑
+  registerUrl();
+}
+
+function validateUsername() {
+  // 验证用户名格式
+  if (registerUsername.value.trim() === '') {
+    usernameError.value = '用户名不能为空';
+  } else {
+    usernameError.value = '';
+  }
+}
+
+function validatePassword() {
+  // 验证密码格式
+  if (registerPassword.value.trim() === '') {
+    passwordError.value = '密码不能为空';
+  } else if (registerPassword.value.length < 8) {
+    passwordError.value = '密码长度不能少于8位';
+  } else {
+    passwordError.value = '';
+  }
+}
+
+function validatePhone() {
+  // 验证手机号码格式
+  const phoneRegex = /^[1-9]\d{10}$/;
+  if (!phoneRegex.test(registerPhone.value)) {
+    phoneError.value = '手机号码格式不正确';
+  } else {
+    phoneError.value = '';
+  }
+}
+
+function validateEmail() {
+  // 验证邮箱格式
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(registerEmail.value)) {
+    emailError.value = '邮箱格式不正确';
+  } else {
+    emailError.value = '';
+  }
+}
 async function registerUrl() {
   // 异步函数的内容
-  const url = '${config.api}/register'; // 替换为您的后端接口地址
+  const url = config.api +'/register'; // 替换为您的后端接口地址
   const data = {
     username: registerUsername.value,
-    password: registerPassword.value
+    password: registerPassword.value,
+    phone: registerPhone.value,
+    email: registerEmail.value
   };
 
   try {
@@ -271,5 +347,9 @@ button {
   background-color: #007bff; /* 设置按钮背景颜色 */
   color: #fff; /* 设置按钮文本颜色 */
 }
+.error-message {
+  color: red;
+}
+
 
 </style>
